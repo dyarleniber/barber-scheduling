@@ -4,3 +4,6 @@ node_modules
 
 tmp/uploads/*
 !tmp/uploads/.gitkeep
+
+tmp/sessions/*
+!tmp/sessions/.gitkeep
