@@ -16,7 +16,7 @@ button {
 }
 
 body {
-  background: #7159c1;
+  background: #4169e1;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   text-rendering: optimizelegibility !important;
@@ -64,7 +64,7 @@ body {
 }
 
 .auth-wrapper form input:not([type="checkbox"]):focus {
-  border-color: #c1b2f3;
+  border-color: #809aeb;
 }
 
 .auth-wrapper form label[for="avatar"] {
@@ -110,12 +110,12 @@ body {
   font-size: 14px;
   border: 0;
   color: #fff;
-  background: #7159c1;
+  background: #4169e1;
   margin-top: 5px;
 }
 
 .auth-wrapper form button:hover {
-  background: #634dac;
+  background: #204ac8;
 }
 
 .auth-wrapper form a {
@@ -217,7 +217,7 @@ ul.providers {
 }
 
 .provider a {
-  background: #7159c1;
+  background: #4169e1;
   padding: 5px 10px;
   font-weight: bold;
   text-decoration: none;
@@ -283,10 +283,10 @@ ul.providers {
   font-size: 14px;
   border: 0;
   color: #fff;
-  background: #7159c1;
+  background: #4169e1;
   margin-top: 5px;
 }
 
 .main-wrapper .content form button:hover {
-  background: #634dac;
+  background: #204ac8;
 }
