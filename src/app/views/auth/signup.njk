@@ -5,23 +5,23 @@
     {% include "_partials/flash.njk" %}
 
     <label for="avatar">
-      <img src="/images/avatar.svg" height="24" />
+      <img class="avatar-img" src="/images/avatar.svg" />
     </label>
 
     <input id="avatar" name="avatar" type="file" />
 
-    <input type="text" name="name" placeholder="Nome completo" />
+    <input type="text" name="name" placeholder="Full name" />
     <input type="email" name="email" placeholder="E-mail" />
-    <input type="password" name="password" placeholder="Senha" />
+    <input type="password" name="password" placeholder="Password" />
 
     <label for="provider">
       <input type="checkbox" id="provider" name="provider" value="1" />
-      Sou cabeleireiro
+      I am a barber
     </label>
 
-    <button type="submit">Criar conta</button>
+    <button type="submit">Sign up</button>
 
-    <a href="/">Já possuo conta</a>
+    <a href="/">I already have an account</a>
   </form>
 
   <script type="text/javascript">

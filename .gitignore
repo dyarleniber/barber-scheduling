@@ -7,3 +7,5 @@ tmp/uploads/*
 
 tmp/sessions/*
 !tmp/sessions/.gitkeep
+
+.env

@@ -2,15 +2,15 @@
 
 {% block body %}
   <form action="/signin" method="POST">
-    <img src="/images/logo.svg" height="42" />
+    <img class="logo-img" src="/images/logo.svg" />
 
     {% include "_partials/flash.njk" %}
 
     <input type="email" name="email" placeholder="E-mail" />
-    <input type="password" name="password" placeholder="Senha" />
+    <input type="password" name="password" placeholder="Password" />
 
-    <button type="submit">Entrar</button>
+    <button type="submit">Log in</button>
 
-    <a href="/signup">Criar conta</a>
+    <a href="/signup">Sign up</a>
   </form>
 {% endblock %}

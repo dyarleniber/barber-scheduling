@@ -290,3 +290,11 @@ ul.providers {
 .main-wrapper .content form button:hover {
   background: #204ac8;
 }
+
+.avatar-img {
+  height: 24;
+}
+
+.logo-img {
+  height: 42;
+}

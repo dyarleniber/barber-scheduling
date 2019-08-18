@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const session = require('express-session')
 const flash = require('express-flash')
@@ -20,8 +22,8 @@ class App {
     this.express.use(flash())
     this.express.use(
       session({
-        name: 'root',
-        secret: 'MyAppSecret',
+        name: process.env.SESSION_NAME,
+        secret: process.env.SESSION_SECRET,
         resave: true,
         store: new FileStore({
           path: path.resolve(__dirname, '..', 'tmp', 'sessions')

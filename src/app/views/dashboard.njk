@@ -2,8 +2,8 @@
 
 {% block body %}
   <div class="content">
-    <strong>Olá, {{ user.name }}</strong>
-    <p>Inicie um agendamento escolhendo um profissional abaixo:</p>
+    <strong>Hi, {{ user.name }}</strong>
+    <p>Choose a barber below:</p>
 
     <ul class="providers">
       {% for provider in providers %}
@@ -17,6 +17,6 @@
       {% endfor %}
     </ul>
 
-    <a href="/app/logout" class="logout">Sair</a>
+    <a href="/app/logout" class="logout">Log out</a>
   </div>
 {% endblock %}
