@@ -1,3 +1,5 @@
+const Joi = require('joi')
+
 const { User } = require('../models')
 
 class SessionController {
@@ -6,6 +8,19 @@ class SessionController {
   }
 
   async store (req, res) {
+    const { error } = Joi.validate(req.body, {
+      email: Joi.string().email().required(),
+      password: Joi.string().required()
+    })
+
+    if (error) {
+      error.details.forEach(element => {
+        req.flash('error', element.message)
+      })
+
+      return res.redirect('/')
+    }
+
     const { email, password } = req.body
 
     const user = await User.findOne({ where: { email } })

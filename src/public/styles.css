@@ -71,7 +71,7 @@ body {
   width: 80px;
   height: 80px;
   background: #eee;
-  border-radius: 50%;
+  border-radius: 20%;
   align-self: center;
   display: flex;
   justify-content: center;
@@ -208,7 +208,7 @@ ul.providers {
 .provider img {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
+  border-radius: 20%;
 }
 
 .provider strong {

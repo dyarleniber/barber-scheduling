@@ -19,7 +19,6 @@ class App {
 
   middlewares () {
     this.express.use(express.urlencoded({ extended: false }))
-    this.express.use(flash())
     this.express.use(
       session({
         name: process.env.SESSION_NAME,
@@ -31,6 +30,7 @@ class App {
         saveUninitialized: true
       })
     )
+    this.express.use(flash())
   }
 
   views () {

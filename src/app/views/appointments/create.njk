@@ -6,7 +6,7 @@
 
     <div class="provider">
       <div>
-        <img src="/files/{{ provider.avatar }}" />
+        <img src="{{ provider.avatar_path }}" />
         <strong>{{ provider.name }}</strong>
       </div>
     </div>
@@ -23,7 +23,7 @@
   <script type="text/javascript">
     flatpickr('.flatpickr', {
       minDate: new Date(),
-      dateFormat,
+      dateFormat: '{{ dateFormat }}',
       onChange: function (date) {
         fetch(`/app/available/{{ provider.id }}?date=${date[0].getTime()}`).then(function (response) {
           response.text().then(function (html) {
