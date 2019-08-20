@@ -21,26 +21,28 @@ module.exports = (sequelize, DataTypes) => {
           }
         },
         afterFind: async result => {
-          if (result.constructor === Array) {
-            result = result.map(async item => {
-              await fileHelper.uploadFileExists(item.avatar)
+          if (result) {
+            if (result.constructor === Array) {
+              result = result.map(async item => {
+                await fileHelper.uploadFileExists(item.avatar)
+                  .then(function (res) {
+                    item.avatar_path = `/files/${item.avatar}`
+                  })
+                  .catch(function (e) {
+                    item.avatar_path = '/images/avatar.svg'
+                  })
+
+                return item
+              })
+            } else {
+              await fileHelper.uploadFileExists(result.avatar)
                 .then(function (res) {
-                  item.avatar_path = `/files/${item.avatar}`
+                  result.avatar_path = `/files/${result.avatar}`
                 })
                 .catch(function (e) {
-                  item.avatar_path = '/images/avatar.svg'
+                  result.avatar_path = '/images/avatar.svg'
                 })
-
-              return item
-            })
-          } else {
-            await fileHelper.uploadFileExists(result.avatar)
-              .then(function (res) {
-                result.avatar_path = `/files/${result.avatar}`
-              })
-              .catch(function (e) {
-                result.avatar_path = '/images/avatar.svg'
-              })
+            }
           }
 
           return result

@@ -78,6 +78,7 @@ body {
   align-items: center;
   margin-bottom: 20px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .auth-wrapper form label[for="avatar"] img.preview {
@@ -234,6 +235,10 @@ ul.providers {
   border: 1px solid #de6d6d;
   color: rgba(0, 0, 0, 0.6);
   margin-bottom: 10px;
+}
+
+.alert:first-letter {
+  text-transform: capitalize;
 }
 
 .alert-success {

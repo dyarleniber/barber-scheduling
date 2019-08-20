@@ -2,6 +2,8 @@ const Joi = require('joi')
 
 const { User } = require('../models')
 
+const flashHelper = require('../helpers/flash')
+
 class SessionController {
   async create (req, res) {
     return res.render('auth/signin')
@@ -15,7 +17,7 @@ class SessionController {
 
     if (error) {
       error.details.forEach(element => {
-        req.flash('error', element.message)
+        flashHelper.errorMessage(req, res, element.message)
       })
 
       return res.redirect('/')
@@ -26,12 +28,12 @@ class SessionController {
     const user = await User.findOne({ where: { email } })
 
     if (!user) {
-      req.flash('error', 'User not found')
+      flashHelper.errorMessage(req, res, 'User not found')
       return res.redirect('/')
     }
 
     if (!await user.checkPassword(password)) {
-      req.flash('error', 'Incorrect password')
+      flashHelper.errorMessage(req, res, 'Incorrect password')
       return res.redirect('/')
     }
 

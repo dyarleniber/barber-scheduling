@@ -2,6 +2,8 @@ const Joi = require('joi')
 
 const { User } = require('../models')
 
+const flashHelper = require('../helpers/flash')
+
 class UserController {
   create (req, res) {
     return res.render('auth/signup')
@@ -11,24 +13,25 @@ class UserController {
     const { error } = Joi.validate(req.body, {
       name: Joi.string().required(),
       email: Joi.string().email().required(),
-      password: Joi.string().required()
+      password: Joi.string().required(),
+      provider: Joi.string()
     })
 
     if (error) {
       error.details.forEach(element => {
-        req.flash('error', element.message)
+        flashHelper.errorMessage(req, res, element.message)
       })
 
       return res.redirect('/signup')
     }
 
-    const { name, email, password, provider } = req.body
-    const { filename: avatar } = req.file
+    const { name, email, password, provider = false } = req.body
+    const { filename: avatar } = req.file || {}
 
     const user = await User.findOne({ where: { email } })
 
     if (user) {
-      req.flash('error', 'User already exists')
+      flashHelper.errorMessage(req, res, 'User already exists')
       return res.redirect('/signup')
     }
 
@@ -36,9 +39,11 @@ class UserController {
       name,
       email,
       password,
-      provider,
-      avatar
+      avatar,
+      provider: !!provider
     })
+
+    flashHelper.successMessage(req, res, 'Account successfully created')
 
     return res.redirect('/')
   }

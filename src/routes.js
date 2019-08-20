@@ -6,6 +6,7 @@ const routes = express.Router()
 
 const authMiddleware = require('./app/middlewares/auth')
 const guestMiddleware = require('./app/middlewares/guest')
+const flashMiddleware = require('./app/middlewares/flash')
 
 const UserController = require('./app/controllers/UserController')
 const SessionController = require('./app/controllers/SessionController')
@@ -14,19 +15,12 @@ const FileController = require('./app/controllers/FileController')
 const AppointmentController = require('./app/controllers/AppointmentController')
 const AvailableController = require('./app/controllers/AvailableController')
 
-routes.use((req, res, next) => {
-  res.locals.flashSucces = req.flash('success')
-  res.locals.flashError = req.flash('error')
-
-  return next()
-})
-
 routes.get('/files/:file', FileController.show)
 
-routes.get('/', guestMiddleware, SessionController.create)
+routes.get('/', flashMiddleware, guestMiddleware, SessionController.create)
 routes.post('/signin', SessionController.store)
 
-routes.get('/signup', guestMiddleware, UserController.create)
+routes.get('/signup', flashMiddleware, guestMiddleware, UserController.create)
 routes.post('/signup', upload.single('avatar'), UserController.store)
 
 routes.use('/app', authMiddleware)
