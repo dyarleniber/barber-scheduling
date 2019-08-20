@@ -2,17 +2,16 @@
 
 {% block body %}
   <div class="content">
-    <strong>Hi, {{ user.name }}</strong>
-    <p>Choose a barber below:</p>
+    <strong>Schedules</strong>
+    <p>Your schedules for today</p>
 
     <ul class="providers">
-      {% for provider in providers %}
+      {% for appointment in appointments %}
         <li class="provider">
           <div>
-            <img src="{{ provider.avatar_path }}" />
-            <strong>{{ provider.name }}</strong>
+            <strong>{{ appointment.user.name }}</strong>
+            <strong>{{ appointment.date | date("HH:mm") }}</strong>
           </div>
-          <a href="/app/appointments/new/{{ provider.id }}">+</a>
         </li>
       {% endfor %}
     </ul>

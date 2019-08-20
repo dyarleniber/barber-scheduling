@@ -1,7 +1,6 @@
 const Joi = require('joi')
 
 const { User } = require('../models')
-
 const flashHelper = require('../helpers/flash')
 
 class SessionController {

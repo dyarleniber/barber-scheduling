@@ -119,7 +119,8 @@ body {
   background: #204ac8;
 }
 
-.auth-wrapper form a {
+.auth-wrapper form a,
+.content form a {
   margin-top: 15px;
   display: block;
   text-align: center;
@@ -127,7 +128,8 @@ body {
   text-decoration: none;
 }
 
-.auth-wrapper form a:hover {
+.auth-wrapper form a:hover,
+.content form a:hover {
   color: #666;
 }
 

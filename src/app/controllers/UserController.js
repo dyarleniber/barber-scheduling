@@ -1,7 +1,6 @@
 const Joi = require('joi')
 
 const { User } = require('../models')
-
 const flashHelper = require('../helpers/flash')
 
 class UserController {
@@ -26,7 +25,7 @@ class UserController {
     }
 
     const { name, email, password, provider = false } = req.body
-    const { filename: avatar } = req.file || {}
+    const { filename: avatar = null } = req.file || {}
 
     const user = await User.findOne({ where: { email } })
 

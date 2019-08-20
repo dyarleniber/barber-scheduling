@@ -1,0 +1,24 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+    {% include "_partials/flash.njk" %}
+
+    <strong>Hi, {{ user.name }}</strong>
+    <p>Choose a barber below</p>
+
+    <ul class="providers">
+      {% for provider in providers %}
+        <li class="provider">
+          <div>
+            <img src="{{ provider.avatar_path }}" />
+            <strong>{{ provider.name }}</strong>
+          </div>
+          <a href="/app/appointments/new/{{ provider.id }}">+</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <a href="/app/logout" class="logout">Log out</a>
+  </div>
+{% endblock %}

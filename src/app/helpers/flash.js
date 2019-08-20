@@ -1,7 +1,6 @@
 const stringHelper = require('./string')
 
 const flashMessage = (req, index, message) => {
-  console.log(message)
   req.flash(index, stringHelper.removeQuotes(message))
 }
 
